@@ -19,5 +19,25 @@ class PostsControllerSpec extends PlaySpec {
       status(result) mustBe 200
     }
   }
+  
+  "Add action" must {
+    "when data is ok: add a post and redirect" in {
+      val count = Post.findAll.length
+      val result = controller.add().apply(FakeRequest().
+        withFormUrlEncodedBody("title" -> "Roses",
+                            "content" -> "Roses are ii nioi"))
+      status(result) mustBe 303
+      Post.findAll.length mustBe (count + 1) // 1つデータが追加されてる
+    }
+
+    "when data is not ok: add a post and redirect" in {
+      val count = Post.findAll.length
+      val result = controller.add().apply(FakeRequest().
+        withFormUrlEncodedBody("title" -> null,
+                            "content" -> "Roses are ii nioi"))
+      status(result) mustBe 303
+      Post.findAll.length mustBe count // 追加されてない
+    }
+  }
 }
 
