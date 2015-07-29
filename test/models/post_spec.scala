@@ -11,7 +11,13 @@ class PostSpec extends PlaySpec {
       val post = Post("Melonpan",
                       "Melonpan is very nice")
       post.title mustBe "Melonpan"
-      post.content mustBe "Melonpn is very nice"
+      post.content mustBe "Melonpan is very nice"
+    }
+
+    "have a title" in {
+      a [IllegalArgumentException] must be thrownBy {
+        val post = Post(null, "Currypan is maa maa")
+      }
     }
   }
 }
