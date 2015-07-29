@@ -18,6 +18,10 @@ class PostSpec extends PlaySpec {
       a [IllegalArgumentException] must be thrownBy {
         val post = Post(null, "Currypan is maa maa")
       }
+      
+      a [IllegalArgumentException] must be thrownBy {
+        val post = Post("", "Currypan is maa maa")
+      }
     }
   }
 }

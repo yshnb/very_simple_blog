@@ -1,6 +1,6 @@
 package models
 
 case class Post(title: String, content: String) {
-  require(title != null, "Post must have a title")
+  require(title != null && !title.isEmpty, "Post must have a title")
 }
 
