@@ -9,7 +9,7 @@ class PostSpec extends PlaySpec {
   "A Post" must {
     "be created" in {
       val post = Post("Melonpan",
-                      "Melonpan is very nice.")
+                      "Melonpan is very nice")
       post.title mustBe "Melonpan"
       post.content mustBe "Melonpn is very nice"
     }
